@@ -3,3 +3,55 @@
   margin-top: 10%;
   padding: 20px;
 }
+.title {
+  display: flex;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+form {
+  padding: 25px;
+  align-items: center;
+  width: 350px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: #ffffff;
+}
+input {
+  padding: 10px 0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  outline: none;
+  border: 1px solid gray;
+  width: 100%;
+}
+input::placeholder {
+  padding-left: 10px;
+}
+.infor-box {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid gray;
+  margin-top: 100px;
+  border-radius: 5px;
+}
+.btn {
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  background-image: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  min-height: 40px;
+  padding: 0 15px;
+  border-radius: 4px;
+}
+.btn-sb {
+  width: 100%;
+  background-color: rgb(221, 132, 31);
+}
