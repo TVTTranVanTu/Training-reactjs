@@ -31,7 +31,7 @@ class Lifecycle extends Component {
     render() {
         return (
             <div className="app" style={{ backgroundColor: this.state.color }}>
-                <h1>State and lifecycle in Reactjs</h1>
+                <h1>Demo State and lifecycle in Reactjs</h1>
                 <h2>hello {this.state.hello}</h2>
                 <button onClick={this.changeState}>Click me!</button>
             </div>
