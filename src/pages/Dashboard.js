@@ -1,26 +1,67 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import EditForm from '../components/EditForm';
+import TaskForm from '../components/TaskForm';
+import TaskList from '../components/TaskList';
 
 function Dashboard(props) {
     const [isDisplay, setIsDisplay] = useState(false);
-    let todoList = [
+    const [isEditForm, setIsEditForm] = useState(false);
+    const [tasks, setTasks] = useState([
         {
+            id: 1,
             name: "Lifecycle and Props State",
             status: true
         },
         {
+            id: 2,
             name: "HandleEvent Key Mouse Form submit",
             status: true
         },
         {
+            id: 3,
             name: "Conditonal Rendering",
             status: true
         },
         {
+            id: 4,
             name: "Lifting State Up",
             status: false
         },
-    ];
+    ]);
+    const [taskEdit, setTaskEdit] = useState(null);
+
+
+    const onSubmit = (data) => {
+        console.log(data);
+        if (!data.id) {
+            data.id = tasks.length + 1;
+            let copy = [...tasks];
+            copy = [...copy, data];
+            setTasks(copy);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        } else {
+            tasks[data.id - 1] = data;
+        }
+
+        onCloseForm();
+    }
+    const onCloseForm = () => {
+        setIsDisplay(false);
+        setIsEditForm(false);
+    }
+    const onRemove = (id) => {
+        tasks.splice(id, 1);
+        setTasks(tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+    const onUpdate = (id) => {
+        var a = tasks[id - 1];
+        setIsEditForm(true);
+        setIsDisplay(false);
+        setTaskEdit(a);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+
+    }
     return (
         <div className="welcome">
             <h1 className="text-center">Enclave's Bootcamp Training Program</h1>
@@ -31,36 +72,16 @@ function Dashboard(props) {
                     <hr />
                 </div>
                 <div className="row">
-                    <div className={isDisplay === true ? ("col-xs-4 col-sm-4 col-md-4 col-lg-4") : ('')}>
+                    <div className={isDisplay === true | isEditForm === true ? ("col-xs-4 col-sm-4 col-md-4 col-lg-4") : ('')}>
                         {
                             isDisplay === true ? (
-                                <div className="panel panel-warning">
-                                    <div className="panel-heading">
-                                        <h3 className="panel-title">Add new task</h3>
-                                    </div>
-                                    <div className="panel-body">
-                                        <form>
-                                            <div className="form-group">
-                                                <label>Name :</label>
-                                                <input type="text" className="form-control" />
-                                            </div>
-                                            <label>Status :</label>
-                                            <select className="form-control" required="required">
-                                                <option value="1">learned</option>
-                                                <option value="0">studying</option>
-                                            </select>
-                                            <br />
-                                            <div className="text-center">
-                                                <button type="submit" className="btn btn-warning">Add</button>&nbsp;
-                                                <button type="submit" className="btn btn-danger">Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <TaskForm onCloseForm={onCloseForm} onSubmit={onSubmit} />
+                            ) : isEditForm === true ? (
+                                <EditForm onCloseForm={onCloseForm} onSubmit={onSubmit} task={taskEdit} />
                             ) : ('')
                         }
                     </div>
-                    <div className={isDisplay === true ? ('col-xs-8 col-sm-8 col-md-8 col-lg-8') : ('col-xs-12 col-sm-12 col-md-12 col-lg-12')}>
+                    <div className={isDisplay === true | isEditForm === true ? ('col-xs-8 col-sm-8 col-md-8 col-lg-8') : ('col-xs-12 col-sm-12 col-md-12 col-lg-12')}>
                         <div className="row mt-15 mb-15">
                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div className="input-group">
@@ -80,52 +101,10 @@ function Dashboard(props) {
                         </div>
                         <div className="row mt-15">
                             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <table className="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th className="text-center">STT</th>
-                                            <th className="text-center">Name</th>
-                                            <th className="text-center">Status</th>
-                                            <th className="text-center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            todoList.map((item, index) => (
-                                                <tr key={index}>
-                                                    <td>{index + 1}</td>
-                                                    <td>
-                                                        <Link to={item.name.replace(/ /g, "-")}>{item.name}</Link>
-                                                    </td>
-                                                    <td className="text-center">
-                                                        {
-                                                            item.status === true ? (
-                                                                <span className="label label-success">
-                                                                    learned
-                                                                </span>
-                                                            ) : (
-                                                                <span className="label label-danger">
-                                                                    studying
-                                                                </span>
-                                                            )
-                                                        }
-
-                                                    </td>
-                                                    <td className="text-center">
-                                                        <button type="button" className="btn btn-warning">
-                                                            <span className="fa fa-pencil"></span>Edit
-                                                        </button>
-                                                        &nbsp;
-                                                        <button type="button" className="btn btn-danger">
-                                                            <span className="fa fa-trash"></span>Remove
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))
-                                        }
-
-                                    </tbody>
-                                </table>
+                                <TaskList
+                                    tasks={tasks}
+                                    onUpdate={onUpdate}
+                                    onRemove={onRemove} />
                             </div>
                         </div>
                     </div>
