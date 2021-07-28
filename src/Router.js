@@ -5,7 +5,6 @@ import Lifecycle from './components/Lifecycle';
 import Dashboard from './pages/Dashboard';
 
 
-
 const routes = [
 
     {
@@ -14,17 +13,17 @@ const routes = [
         main: () => <Dashboard />
     },
     {
-        path: '/Lifecycle and Props State',
+        path: '/Lifecycle-and-Props-State',
         exact: true,
         main: () => <Lifecycle />
     },
     {
-        path: '/HandleEvent, Key, Mouse, Form submit',
+        path: '/HandleEvent-Key-Mouse-Form-submit',
         exact: true,
         main: () => <HandleEvent />
     },
     {
-        path: '/Conditonal Rendering',
+        path: '/Conditonal-Rendering',
         exact: true,
         main: () => <ConditonalRendering />
     },

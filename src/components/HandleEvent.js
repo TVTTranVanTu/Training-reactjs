@@ -16,7 +16,7 @@ function HandleEvent(props) {
         }
     }
     return (
-        <div>
+        <div className="handleevent">
             <form
                 style={{ display: ` ${check === false ? 'block' : 'none'}` }}
                 className="form-inf" onSubmit={handleSubmit}>

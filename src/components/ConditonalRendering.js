@@ -56,7 +56,7 @@ class ConditonalRendering extends Component {
         }
 
         return (
-            <div>
+            <div className="ConditonalRendering">
                 <Greeting isLoggedIn={isLoggedIn} />
                 {button}
             </div>
