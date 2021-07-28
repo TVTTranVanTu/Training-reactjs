@@ -38,10 +38,10 @@ function Dashboard(props) {
             let copy = [...tasks];
             copy = [...copy, data];
             setTasks(copy);
-            localStorage.setItem('tasks', JSON.stringify(tasks));
         } else {
             tasks[data.id - 1] = data;
         }
+        localStorage.setItem('tasks', JSON.stringify(tasks));
 
         onCloseForm();
     }
@@ -50,8 +50,9 @@ function Dashboard(props) {
         setIsEditForm(false);
     }
     const onRemove = (id) => {
-        tasks.splice(id, 1);
-        setTasks(tasks);
+        tasks.splice(id - 1, 1);
+        var a = [...tasks];
+        setTasks(a);
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
     const onUpdate = (id) => {
