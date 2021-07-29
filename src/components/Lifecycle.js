@@ -1,52 +1,50 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-class Lifecycle extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            hello: "everyone",
-            color: "deeppink"
-        };
-        this.changeState = this.changeState.bind(this);
-        this.getRandomColor = this.getRandomColor.bind(this);
-    }
-    componentWillMount() {
-        console.log("ComponentWillMount");
-    }
-    componentDidMount() {
-        console.log("ComponentDidMOunt");
-    }
-    getRandomColor() {
+function Lifecycle(props) {
+    const [color, setColor] = useState("deeppink");
+    const [hello, setHello] = useState("everyone");
+    const [time, setTime] = useState(null);
+    const intervalRef = useRef(null);
+
+    const getRandomColor = () => {
         const COLOR_LIST = ["white", "deeppink", "green", "yellow", "black", "blue", "reed"];
         const randomIndex = Math.trunc(Math.random() * 7);
         return COLOR_LIST[randomIndex];
-    }
-    changeState() {
-        const newColor = this.getRandomColor();
-        this.setState({
-            hello: "Lewis",
-            color: newColor
-        })
-    }
-    render() {
-        return (
-            <div className="lifecycle" style={{ backgroundColor: this.state.color }}>
+    };
+
+    const handleClick = () => {
+        const newColor = getRandomColor();
+        setColor(newColor);
+
+        localStorage.setItem('lifecycle', newColor);
+    };
+
+    useEffect(() => {
+        intervalRef.current = setInterval(() => {
+            const now = new Date();
+            const hours = `0${now.getHours()}`.slice(-2);
+            const minutes = `0${now.getMinutes()}`.slice(-2);
+            const serconds = `0${now.getSeconds()}`.slice(-2);
+            const currentTime = `${hours}:${minutes}:${serconds}`;
+
+            setTime(currentTime);
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalRef.current);
+        }
+    }, []);
+
+    return (
+        <div>
+            <div className="time">{time}</div>
+            <div className="lifecycle" style={{ backgroundColor: color }}>
                 <h1>Demo State and lifecycle in Reactjs</h1>
-                <h2>hello {this.state.hello}</h2>
-                <button onClick={this.changeState}>Click me!</button>
+                <h2>hello {hello}</h2>
+                <button onClick={handleClick}>Click me!</button>
             </div>
-        )
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("shouldComponentUpdate");
-        return true;
-    }
-    componentWillUpdate() {
-        console.log("componentWillUpdate");
-    }
-    componentDidUpdate() {
-        console.log("componentDidUpdate");
-    }
+        </div>
+    );
 }
 
 export default Lifecycle;

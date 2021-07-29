@@ -1,55 +1,5 @@
-a {
-  text-decoration: none;
-  color: black;
-}
 .welcome {
   margin-top: 15px;
-}
-.mb-15 {
-  margin-bottom: 15px;
-}
-h1 {
-  color: green;
-}
-h2 {
-  color: red;
-}
-h3 span {
-  float: right;
-  font-size: 20px;
-  align-items: center;
-  margin-top: 5px;
-}
-li {
-  cursor: pointer;
-}
-a:hover {
-  color: blue;
-}
-.title {
-  display: flex;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-form {
-  padding: 25px;
-  align-items: center;
-  width: 350px;
-  margin: 0 auto;
-  background-color: #ffffff;
-}
-input {
-  padding: 10px 0;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  outline: none;
-  border: 1px solid gray;
-  width: 100%;
-}
-input::placeholder {
-  padding-left: 10px;
 }
 .infor-box {
   width: 600px;
@@ -58,56 +8,6 @@ input::placeholder {
   border: 1px solid gray;
   margin-top: 20px;
   border-radius: 5px;
-}
-.btn {
-  line-height: 1.5;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  background-image: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  user-select: none;
-  min-height: 40px;
-  padding: 0 15px;
-  border-radius: 4px;
-}
-.btn-sb {
-  width: 100%;
-  background-color: rgb(221, 132, 31);
-}
-.fa {
-  margin-right: 5px;
-}
-
-.panel {
-  margin-bottom: 20px;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
-  box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
-}
-.panel-warning {
-  border-color: #faebcc;
-}
-.panel-heading {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
-}
-
-.panel-body form {
-  width: auto;
-}
-.lifecycle {
-  width: 800px;
-  height: 200px;
-  margin: 0 auto;
-  padding: 20px;
-  margin-top: 100px;
-  text-align: center;
 }
 .handleevent {
   margin-top: 100px;
@@ -119,23 +19,4 @@ input::placeholder {
   margin: 0 auto;
   text-align: center;
   margin-top: 200px;
-}
-.label-success {
-  background-color: #5cb85c;
-}
-.label-danger {
-  background-color: #ee5a35;
-}
-
-.label {
-  display: inline;
-  padding: 0.2em 0.6em 0.3em;
-  font-size: 75%;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.25em;
 }

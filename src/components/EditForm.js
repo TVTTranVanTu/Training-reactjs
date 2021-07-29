@@ -7,13 +7,17 @@ class EditForm extends Component {
             id: '',
             name: '',
             status: false
-        }
+        };
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onCloseForm = this.onCloseForm.bind(this);
     }
 
-    onChange = (event) => {
+    onChange(event) {
         var target = event.target;
         var name = target.name;
         var value = target.value;
+
         if (name === 'status') {
             value = target.value === 'true' ? true : false;
         }
@@ -21,14 +25,15 @@ class EditForm extends Component {
             [name]: value
         });
     }
-    onSubmit = (e) => {
+    onSubmit(e) {
         e.preventDefault();
         this.props.onSubmit(this.state);
     };
 
-    onCloseForm = () => {
+    onCloseForm() {
         this.props.onCloseForm();
-    }
+    };
+
     componentWillMount() {
         if (this.props.task) {
             this.setState({
@@ -37,9 +42,9 @@ class EditForm extends Component {
                 status: this.props.task.status
             })
         }
-    }
-    render() {
+    };
 
+    render() {
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
@@ -47,7 +52,8 @@ class EditForm extends Component {
                         Edit task
                         <span
                             className="fa fa-times-circle text-right"
-                            onClick={this.onCloseForm}></span>
+                            onClick={this.onCloseForm}>
+                        </span>
                     </h3>
                 </div>
                 <div className="panel-body">
@@ -59,7 +65,8 @@ class EditForm extends Component {
                                 name="name"
                                 value={this.state.name}
                                 className="form-control"
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                            />
                         </div>
                         <label>Status :</label>
                         <select
@@ -67,7 +74,8 @@ class EditForm extends Component {
                             value={this.state.status}
                             required="required"
                             name="status"
-                            onChange={this.onChange}>
+                            onChange={this.onChange}
+                        >
                             <option value={true}>learned</option>
                             <option value={false}>studying</option>
                         </select>

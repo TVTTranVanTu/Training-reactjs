@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import EditForm from '../components/EditForm';
 import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
@@ -6,6 +6,7 @@ import TaskList from '../components/TaskList';
 function Dashboard(props) {
     const [isDisplay, setIsDisplay] = useState(false);
     const [isEditForm, setIsEditForm] = useState(false);
+    const [taskEdit, setTaskEdit] = useState(null);
     const [tasks, setTasks] = useState([
         {
             id: 1,
@@ -28,8 +29,6 @@ function Dashboard(props) {
             status: false
         },
     ]);
-    const [taskEdit, setTaskEdit] = useState(null);
-
 
     const onSubmit = (data) => {
         console.log(data);
@@ -44,25 +43,28 @@ function Dashboard(props) {
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
         onCloseForm();
-    }
+    };
+
     const onCloseForm = () => {
         setIsDisplay(false);
         setIsEditForm(false);
-    }
+    };
+
     const onRemove = (id) => {
         tasks.splice(id - 1, 1);
         var a = [...tasks];
         setTasks(a);
         localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
+    };
+
     const onUpdate = (id) => {
         var a = tasks[id - 1];
         setIsEditForm(true);
         setIsDisplay(false);
         setTaskEdit(a);
         localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
 
-    }
     return (
         <div className="welcome">
             <h1 className="text-center">Enclave's Bootcamp Training Program</h1>
@@ -95,7 +97,7 @@ function Dashboard(props) {
                                 </div>
                             </div>
                             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <button type="button" className="btn btn-primary" onClick={() => setIsDisplay(true)}>
+                                <button type="button" className="btn btn-primary ml-100" onClick={() => setIsDisplay(true)}>
                                     <span className="fa fa-plus"></span>Add new task
                                 </button>
                             </div>
@@ -105,7 +107,8 @@ function Dashboard(props) {
                                 <TaskList
                                     tasks={tasks}
                                     onUpdate={onUpdate}
-                                    onRemove={onRemove} />
+                                    onRemove={onRemove}
+                                />
                             </div>
                         </div>
                     </div>

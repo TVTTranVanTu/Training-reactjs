@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class TaskItem extends Component {
+
     onUpdate = () => {
         this.props.onUpdate(this.props.task.id);
     }
+
     onRemove = () => {
         this.props.onRemove(this.props.task.id);
     }
+
     render() {
         var { task, index } = this.props;
         return (
@@ -28,7 +31,6 @@ class TaskItem extends Component {
                             </span>
                         )
                     }
-
                 </td>
                 <td className="text-center">
                     <button

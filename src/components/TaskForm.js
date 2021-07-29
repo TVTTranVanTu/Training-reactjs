@@ -20,6 +20,7 @@ class TaskForm extends Component {
             [name]: value
         });
     }
+
     onSubmit = (e) => {
         e.preventDefault();
         this.props.onSubmit(this.state);
@@ -28,8 +29,8 @@ class TaskForm extends Component {
     onCloseForm = () => {
         this.props.onCloseForm();
     }
-    render() {
 
+    render() {
         return (
             <div className="panel panel-warning">
                 <div className="panel-heading">
@@ -49,7 +50,8 @@ class TaskForm extends Component {
                                 name="name"
                                 value={this.state.name}
                                 className="form-control"
-                                onChange={this.onChange} />
+                                onChange={this.onChange}
+                            />
                         </div>
                         <label>Status :</label>
                         <select
@@ -57,7 +59,8 @@ class TaskForm extends Component {
                             value={this.state.status}
                             required="required"
                             name="status"
-                            onChange={this.onChange}>
+                            onChange={this.onChange}
+                        >
                             <option value={true}>learned</option>
                             <option value={false}>studying</option>
                         </select>

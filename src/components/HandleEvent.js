@@ -7,13 +7,16 @@ function HandleEvent(props) {
     const [homeTown, setHomeTown] = useState('');
     const [check, setCheck] = useState(false);
     const list = ["key", "mouse", "submit form"];
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (fullName && englishName && age && homeTown) {
             setCheck(true);
         } else {
             alert("Fields cannot be left blank!");
         }
+
     }
     return (
         <div className="handleevent">
@@ -32,19 +35,23 @@ function HandleEvent(props) {
                     placeholder="Enter your fullName"
                     type="text"
                     value={fullName}
-                    onChange={e => setFullname(e.target.value)} />
+                    onChange={e => setFullname(e.target.value)}
+                />
                 <input
                     placeholder="Enter your englishName"
                     type="text" value={englishName}
-                    onChange={e => setEnglishName(e.target.value)} />
+                    onChange={e => setEnglishName(e.target.value)}
+                />
                 <input
                     placeholder="Enter your age"
                     type="text" value={age}
-                    onChange={e => setAge(e.target.value)} />
+                    onChange={e => setAge(e.target.value)}
+                />
                 <input
                     placeholder="Enter your homeTown"
                     type="text"
-                    value={homeTown} onChange={e => setHomeTown(e.target.value)} />
+                    value={homeTown} onChange={e => setHomeTown(e.target.value)}
+                />
                 <button className="btn btn-sb" type="submit">Submit</button>
             </form>
             <div className="infor-box" style={{ display: ` ${check === false ? 'none' : 'block'}` }} >

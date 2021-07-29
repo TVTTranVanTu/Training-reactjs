@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TaskItem from './TaskItem';
 
 class TaskList extends Component {
-
     render() {
         var { tasks } = this.props;
         return (
@@ -23,7 +22,8 @@ class TaskList extends Component {
                                 index={index}
                                 task={task}
                                 onRemove={this.props.onRemove}
-                                onUpdate={this.props.onUpdate} />
+                                onUpdate={this.props.onUpdate}
+                            />
                         ))
                     }
                 </tbody>
