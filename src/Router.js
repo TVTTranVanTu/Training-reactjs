@@ -2,8 +2,8 @@ import React from 'react';
 import ConditonalRendering from './components/ConditonalRendering';
 import HandleEvent from './components/HandleEvent';
 import Lifecycle from './components/Lifecycle';
+import ReactHook from './components/ReactHook';
 import Dashboard from './pages/Dashboard';
-
 
 const routes = [
 
@@ -27,7 +27,12 @@ const routes = [
         exact: true,
         main: () => <ConditonalRendering />
     },
+    {
+        path: '/React-Hooks',
+        exact: true,
+        main: () => <ReactHook />
+    },
 
-]
+];
 
 export default routes;

@@ -26,7 +26,12 @@ function Dashboard(props) {
         {
             id: 4,
             name: "Lifting State Up",
-            status: false
+            status: true
+        },
+        {
+            id: 5,
+            name: "React-Hooks",
+            status: true
         },
     ]);
 

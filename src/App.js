@@ -4,6 +4,7 @@ import "./App.css";
 import "./css/lifecycle.css";
 import "./css/mixin.css";
 import "./css/task.css";
+import "./css/reactHooks.css";
 import routes from './Router';
 function App(props) {
 

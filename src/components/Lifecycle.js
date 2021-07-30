@@ -15,7 +15,7 @@ function Lifecycle(props) {
     const handleClick = () => {
         const newColor = getRandomColor();
         setColor(newColor);
-
+        setHello("Lewis");
         localStorage.setItem('lifecycle', newColor);
     };
 
