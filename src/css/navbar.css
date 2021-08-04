@@ -1,0 +1,45 @@
+
+.navbar {
+    width: 100%;
+    line-height: 60px;
+}
+
+.navbar ul {
+    line-height: 60px;
+    overflow: hidden;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+
+.navbar ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.logo {
+    line-height: 60px;
+    float: left;
+    margin: 16px 46px;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.sticky.fixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px #ddd;
+}
+.sticky.fixed .top-header {
+    display: none;
+}

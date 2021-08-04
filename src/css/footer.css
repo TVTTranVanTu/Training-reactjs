@@ -1,0 +1,23 @@
+.footer{
+    margin-top: 20px;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    align-items: center;
+}
+.footer p{
+    font-size: 14px;
+}
+.list-inf{
+    justify-content: flex-end;
+    display: flex;
+}
+.item-inf{
+    margin-left: 20px;
+}
+.item-inf i{
+    font-size: 20px;
+    transition: all .3s;
+}
+.item-inf i:hover{
+    color: #e0a800;
+}

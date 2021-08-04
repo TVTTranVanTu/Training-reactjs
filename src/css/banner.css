@@ -1,0 +1,11 @@
+.banner{
+    width: 100%;
+    background-image: url(../assets/image/ReactJS-banner.jpg);
+    height: 500px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+}
+.banner img{
+    width: 100%;
+}

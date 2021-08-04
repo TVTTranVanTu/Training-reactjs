@@ -43,6 +43,9 @@ h3 span {
     align-items: center;
     margin-top: 5px;
 }
+ul{
+    list-style: none;
+}
 li {
     cursor: pointer;
 }
@@ -83,7 +86,6 @@ input::placeholder {
 }
 a {
     text-decoration: none;
-    color: black;
 }
 .btn {
     line-height: 1.5;
